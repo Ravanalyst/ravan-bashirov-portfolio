@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Раван Баширов - Портфолио системного аналитика</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #F2F8FF;
+      color: #9F9F9F;
+    }
+    .modal-shadow {
+      box-shadow: 0 4px 6px rgba(195, 195, 195, 0.7);
+    }
+    .hover-highlight:hover {
+      background-color: #C3C3C3;
+    }
+    .selected-highlight {
+      background-color: #C8E6FF;
+    }
+    .chart-highlight {
+      border-color: #DFDFDF;
+    }
+    .scheme-highlight {
+      background-color: #757575;
+    }
+    .indicator-highlight {
+      background-color: #D9D9D9;
+    }
+    .indicator-chart-highlight {
+      background-color: #F5F5F5;
+    }
+    .line-type-highlight {
+      background-color: #BFBFBF;
+    }
+    .indicator-line-highlight {
+      background-color: #C3C3C3;
+    }
+    .indicator-line {
+      border-color: #00FF00;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    function Portfolio() {
+      return (
+        <div className="min-h-screen flex flex-col">
+          {/* Заголовок */}
+          <header className="bg-white p-6 text-center modal-shadow">
+            <h1 className="text-4xl font-bold text-gray-700">Раван Баширов</h1>
+            <p className="text-xl mt-2">Системный аналитик</p>
+          </header>
+
+          {/* Основное содержимое */}
+          <main className="flex-grow container mx-auto p-6">
+            {/* Раздел "Обо мне" */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-semibold text-gray-700 mb-4">Обо мне</h2>
+              <p className="text-lg">
+                Я системный аналитик с опытом проектирования сложных систем, включая торговые платформы и парсеры данных. Мои навыки включают анализ требований, прототипирование интерфейсов в Figma, разработку JSON-схем, проектирование баз данных, интеграцию Apache Kafka и ZooKeeper, разработку веб-интерфейсов с Flask, настройку Localtunnel, интеграцию с Telegram API, анализ API автодополнения (DaData), проектирование UI-прототипов и анализ UX. Я использую инструменты Jira, Confluence, Swagger, PostgreSQL, dbdiagram.io и Figma для управления проектами и взаимодействия с командой.
+              </p>
+            </section>
+
+            {/* Раздел "Проекты" */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-semibold text-gray-700 mb-4">Проекты</h2>
+              {/* Проект 1: Торговая платформа */}
+              <div className="mb-8">
+                <h3 className="text-xl font-medium text-gray-700 mb-2">Торговая платформа</h3>
+                <p className="text-lg mb-4">
+                  Разработал функциональные и нефункциональные требования, UI-прототипы в Figma и JSON-схемы для торговой платформы с динамическими графиками, временным слайдером, настройками индикаторов и схемами графиков. Провел UX-анализ, спроектировал модальные окна («Symbol Search», «Выбор индикаторов», «Настройки графика», «Схема графиков»), обеспечив интерактивность и синхронизацию данных между клиентом и сервером. Интерфейс включает подсветку (#C8E6FF, #C3C3C3, #DFDFDF, #757575, #BFBFBF, #D9D9D9, #F5F5F5) и шрифт Open Sans.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-white p-4 rounded-lg modal-shadow">
+                    <h4 className="text-lg font-medium text-gray-700">Поиск акций</h4>
+                    <p>Модальное окно «Symbol Search» с ленивой загрузкой (20 акций за прокрутку), историей поиска, изображениями тикетов (или заглушкой с первой буквой). Подсветка при наведении (#C3C3C3), тень (#C3C3C3, 70%). История хранится на сервере, акции сортируются по ID.</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg modal-shadow">
+                    <h4 className="text-lg font-medium text-gray-700">Временной слайдер и тайм-фрейм</h4>
+                    <p>Слайдер для выбора диапазона времени (растягивается, сдвигается). Дропдаун тайм-фреймов (minutes, hours, days) с подсветкой (#C8E6FF, #C3C3C3), по умолчанию 1 day. Данные хранятся в sessionStorage, синхронизируются с сервером.</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg modal-shadow">
+                    <h4 className="text-lg font-medium text-gray-700">Настройки индикаторов</h4>
+                    <p>Модальное окно для выбора и настройки индикаторов (поиск от 3 символов, теги, результативность в %). Поддержка скрытия/отображения, настройки цвета (#00FF00), типа линии (solid, dashed), ширины. Подсветка (#D9D9D9, #F5F5F5, #BFBFBF, #C3C3C3).</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg modal-shadow">
+                    <h4 className="text-lg font-medium text-gray-700">Схемы графиков</h4>
+                    <p>Модальное окно с 5 предустановленными схемами, поддержкой произвольных (до 4x4). Подсветка выбранной схемы (#757575). Состояние и история изменений хранятся на сервере. Поддержка изменения размеров полей.</p>
+                  </div>
+                </div>
+                <div className="mt-6 bg-white p-4 rounded-lg modal-shadow">
+                  <h4 className="text-lg font-medium text-gray-700">Пример JSON-схем</h4>
+                  <p className="text-lg mb-2">Клиентская схема для временного слайдера:</p>
+                  <pre className="bg-gray-100 p-4 rounded text-sm overflow-auto">
+{
+  "startTimestamp": "2024-12-25T08:00:00Z",
+  "endTimestamp": "2024-12-25T18:00:00Z"
+}
+                  </pre>
+                  <p className="text-lg mb-2 mt-4">Схема для окна «Symbol Search»:</p>
+                  <pre className="bg-gray-100 p-4 rounded text-sm overflow-auto">
+{
+  "SearchHistory": ["AAPL", "GOOGL", "TSLA"],
+  "StocksAscendingByID": ["001", "002", "003"],
+  "LazyLoadStocks": [
+    { "ticket_id": "AAPL", "info": "Apple Inc. stock" },
+    { "ticket_id": "GOOGL", "info": "Alphabet Inc. stock" }
+  ]
+}
+                  </pre>
+                  <p className="text-lg mb-2 mt-4">Схема для настроек индикаторов:</p>
+                  <pre className="bg-gray-100 p-4 rounded text-sm overflow-auto">
+{
+  "indicatorSettings": [
+    {
+      "id": "RSI",
+      "lineType": "solid",
+      "lineColor": "#00FF00",
+      "lineWidth": 2
+    },
+    {
+      "id": "MACD",
+      "lineType": "dashed",
+      "lineColor": "#FF0000",
+      "lineWidth": 1
+    }
+  ]
+}
+                  </pre>
+                  <p className="text-lg mb-2 mt-4">Серверная схема для вложенных индикаторов (TRIX):</p>
+                  <pre className="bg-gray-100 p-4 rounded text-sm overflow-auto">
+{
+  "indicator": {
+    "name": "TRIX",
+    "parameters": {
+      "front_end": {
+        "lines": [
+          {
+            "line_color": "#00FF00",
+            "line_width": 2,
+            "line_style": "solid",
+            "background_color": "transparent",
+            "display_values": true,
+            "drawing_area": "own"
+          }
+        ]
+      },
+      "back_end": {
+        "data": [0.02, 0.03, 0.04, 0.05],
+        "parameters": {
+          "n": 14,
+          "ind_under": "ema"
+        }
+      },
+      "nested_indicators": [
+        {
+          "name": "ema",
+          "back_end": {
+            "data": [0.01, 0.02, 0.03],
+            "parameters": {
+              "n": 14,
+              "ind_under": "broken_candles"
+            }
+          },
+          "nested_indicators": {
+            "name": "broken_candles",
+            "back_end": {
+              "data": [
+                {
+                  "open": 1.20,
+                  "close": 1.25,
+                  "high": 1.30,
+                  "low": 1.18
+                },
+                {
+                  "open": 1.25,
+                  "close": 1.22,
+                  "high": 1.28,
+                  "low": 1.18
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+                  </pre>
+                </div>
+              </div>
+
+              {/* Проект 2: Единый парсер недвижимости */}
+              <div className="mb-8">
+                <h3 className="text-xl font-medium text-gray-700 mb-2">Единый парсер недвижимости</h3>
+                <p className="text-lg mb-4">
+                  Провел системный анализ и проектирование архитектуры для парсера недвижимости (Avito, Домклик, Циан). Разработал таблицы БД, интегрировал Apache Kafka и ZooKeeper, настроил Flask-сервер для Miniapp, исследовал выбор адресов через автодополнение (DaData API) и подготовил документацию, получившую высокую оценку («супер»). Координировал обсуждения и версионное планирование.
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-white p-4 rounded-lg modal-shadow">
+                    <h4 className="text-lg font-medium text-gray-700">Цель и контекст</h4>
+                    <p>Создание парсера для риелторов (V1) и всех пользователей (V2), интегрирующего данные с Avito, Домклик, Циан. V1: Telegram-бот (вывод постов, навигация, запуск поисков), Miniapp (ввод настроек), парсер. V2: добавлена подсистема подписок (тарифы, уведомления, платежи). Настройки формируются через Miniapp и передаются через Kafka.</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg modal-shadow">
+                    <h4 className="text-lg font-medium text-gray-700">Архитектура и технологии</h4>
+                    <p>Разработал таблицы: `ParserSettings` (JSON в `search_query`), `Announcements` (`jsonb` для `raw_data`), `Sellers` (`seller_type`), `Regions`, `Categories`. Интегрировал Kafka (топик `search_settings`), ZooKeeper, Flask (Miniapp), Localtunnel. Попытался интегрировать Telegram-бот, но столкнулся с проблемами Localtunnel (ошибка 503). Использовал DaData API для автодополнения адресов. <a href="https://dbdiagram.io/d/682b0aaa1227bdcb4ef384c3" className="text-blue-500 hover:underline">ER-диаграмма</a>.</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg modal-shadow">
+                    <h4 className="text-lg font-medium text-gray-700">Анализ и планирование</h4>
+                    <p>Провел анализ выбора адресов: текстовый поиск с автодополнением (DaData API), карты (Яндекс.Карты/2GIS), выпадающий список. Рекомендовал автодополнение для V1 (простота, мобильность). Рассмотрел альтернативы БД: отдельные поля, таблицы, EAV; выбрал `jsonb`. На созвоне 24.05.2025 представил таблицы, учел замечания (упрощение типов, `periodicity = 0`, `seller_type`). Запланирован анализ JSON и созвон 15.06.2025.</p>
+                  </div>
+                  <div className="bg-white p-4 rounded-lg modal-shadow">
+                    <h4 className="text-lg font-medium text-gray-700">Пример данных и кода</h4>
+                    <p>Пример JSON для `search_settings` (Kafka):</p>
+                    <pre className="bg-gray-100 p-4 rounded text-sm overflow-auto">
+{
+  "user_id": "123",
+  "setting": "test"
+}
+                    </pre>
+                    <p className="text-lg mt-2">Пример JSON для `search_query` (ParserSettings):</p>
+                    <pre className="bg-gray-100 p-4 rounded text-sm overflow-auto">
+{
+  "category": "Саладетты",
+  "region": "Москва",
+  "periodicity": 0,
+  "status": "new",
+  "user_id": 12345
+}
+                    </pre>
+                    <p className="text-lg mt-2">Пример JSON для автодополнения (DaData API):</p>
+                    <pre className="bg-gray-100 p-4 rounded text-sm overflow-auto">
+{
+  "suggestions": [
+    {
+      "value": "г Москва",
+      "data": {
+        "kladr_id": "7700000000000",
+        "type": "city"
+      }
+    },
+    {
+      "value": "г Санкт-Петербург",
+      "data": {
+        "kladr_id": "7800000000000",
+        "type": "city"
+      }
+    }
+  ]
+}
+                    </pre>
+                    <p className="text-lg mt-2">Пример JSON для `raw_data` (Announcements):</p>
+                    <pre className="bg-gray-100 p-4 rounded text-sm overflow-auto">
+{
+  "floor": 5,
+  "rooms_count": 2,
+  "total_meters": 60.5,
+  "author": "Agency",
+  "district": "Центральный"
+}
+                    </pre>
+                    <p className="text-lg mt-2">Пример SQL-запроса:</p>
+                    <pre className="bg-gray-100 p-4 rounded text-sm overflow-auto">
+SELECT raw_data->>'floor' AS floor FROM Announcements WHERE source = 'cian';
+                    </pre>
+                    <p className="text-lg mt-2">Пример Python-кода (Kafka Producer):</p>
+                    <pre className="bg-gray-100 p-4 rounded text-sm overflow-auto">
+from confluent_kafka import Producer
+import json
+
+conf = {
+    'bootstrap.servers': 'localhost:9092',
+    'client.id': 'miniapp-producer'
+}
+
+producer = Producer(conf)
+search_settings = {
+    "category": "Саладетты",
+    "region": "Москва",
+    "periodicity": 0,
+    "status": "new",
+    "user_id": 12345
+}
+message = json.dumps(search_settings)
+producer.produce(
+    topic='search_settings',
+    key=str(search_settings['user_id']),
+    value=message
+)
+producer.flush()
+                    </pre>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Раздел "Резюме" */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-semibold text-gray-700 mb-4">Резюме</h2>
+              <div className="bg-white p-6 rounded-lg modal-shadow">
+                <p><strong>Имя:</strong> Раван Баширов</p>
+                <p><strong>Навыки:</strong> Системный анализ, сбор требований, прототипирование интерфейсов, проектирование баз данных, разработка JSON-схем, интеграция Apache Kafka и ZooKeeper, Python (confluent-kafka, Flask), настройка Localtunnel, Telegram API, анализ API автодополнения (DaData), проектирование UI-прототипов, UX-анализ, техническая документация, командная координация</p>
+                <p><strong>Инструменты:</strong> SQL, PostgreSQL (jsonb), Apache Kafka, ZooKeeper, Flask, Localtunnel, Telegram API, DaData API, REST, Swagger, Jira, Confluence, Figma, Miro, UML, dbdiagram.io</p>
+                <p><strong>Опыт:</strong> Проектирование торговой платформы с динамическими графиками, разработка UI-прототипов в Figma, JSON-схем, UX-анализ, проектирование базы данных для парсера недвижимости с `jsonb`, интеграция Kafka и ZooKeeper, настройка Flask-сервера и Localtunnel, попытка интеграции Telegram-бота, анализ выбора адресов с DaData API, подготовка документации и таблиц, координация обсуждений с командой.</p>
+              </div>
+            </section>
+
+            {/* Раздел "Контакты" */}
+            <section className="mb-12">
+              <h2 className="text-2xl font-semibold text-gray-700 mb-4">Контакты</h2>
+              <p className="text-lg">
+                Свяжитесь со мной через <a href="https://github.com/Ravanalyst" className="text-blue-500 hover:underline">GitHub</a> или по электронной почте для обсуждения сотрудничества.
+              </p>
+            </section>
+          </main>
+
+          {/* Футер */}
+          <footer className="bg-white p-4 text-center modal-shadow">
+            <p>© 2025 Раван Баширов. Все права защищены.</p>
+          </footer>
+        </div>
+      );
+    }
+
+    ReactDOM.render(<Portfolio />, document.getElementById('root'));
+  </script>
+</body>
+</html>
