@@ -329,7 +329,9 @@ producer.flush()
       );
     }
 
-    ReactDOM.render(<Portfolio />, document.getElementById('root'));
+    const container = document.getElementById('root');
+    const root = ReactDOM.createRoot(container);
+    root.render(<Portfolio />);
   </script>
 </body>
 </html>
